@@ -1,0 +1,57 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    width: 100%;
+    padding: 2rem 3rem;
+
+    .search_categories_container {
+        display: flex;
+        justify-content: space-between;
+
+        .child__common {
+            border: none;
+            padding: 0.4rem 1rem;
+            border-radius: 8px;
+            outline: none;
+            background: #fff;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            width: 22rem;
+        }
+
+       .select-main {
+            width: 14rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        select{
+            appearance: none;
+            background: none;
+            width: 100%;
+            border: none;
+        }
+        
+        select:after{
+            position: absolute;
+            content: "";
+            top: 14px;
+            right: 10px;
+            width: 0;
+            height: 0;
+            border: 6px solid transparent;
+            border-color: #fff transparent transparent transparent;
+        }
+       
+    }
+    .card__container{
+        width: 100%;
+      
+        padding:0 10rem;
+        
+    }
+}

@@ -1,0 +1,18 @@
+.create-container{
+    position: fixed;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    align-items: center;
+    font-size: 2.5rem;
+    bottom:20px;
+    right: 49px;
+  &:hover{
+    cursor: pointer;
+    background: rgb(135, 132, 132);
+  }
+}

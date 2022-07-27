@@ -1,0 +1,21 @@
+@import '/src/sass/variables';
+.header-container{
+    width: 100%;
+    position: sticky;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    z-index: 100;
+    top: 7px;
+    padding: 0.5rem 2rem;
+    font-family: $head;
+    border-radius: 8px;
+    height: 2.5rem;
+    h3{
+        font-weight: 700;
+        font-style: italic;
+        color: #090909;
+    }
+}
