@@ -10,10 +10,12 @@ export interface AvatarTypes {
     style?: string,
 }
 
+
 export interface ServiceProps {
     getProducts: () => Promise<any>,
     getProductbyId: (id: string) => Promise<any>,
     getCategory: () => Promise<any>,
     getProductbyCategory: (id: string) => Promise<any>,
-    
+    postProduct: (data: any) => Promise<any>,
+    deleteProduct: (id: string) => Promise<any>
 }

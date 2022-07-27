@@ -4,6 +4,8 @@ import Header from '../Header/Header'
 import Avatar from '../Products/Card/Avatar/Avatar'
 import './Productinfo.scss'
 import { useParams } from 'react-router-dom'
+import {AiTwotoneDelete} from 'react-icons/ai'
+import Loader from '../Loader/Loader';
 
 export default function Productinfo() {
     const [products, setProducts] = useState<any>([]);
@@ -19,9 +21,19 @@ export default function Productinfo() {
     }, [])
     
 
+const deleteProduct = () => {
+  window.confirm('Are you sure you want to delete this product?') &&
+  setIsLoading(true);
+  UpaymentServices.deleteProduct(id).then(() => {
+    setIsLoading(false);
+    window.location.href = '/'
 
+  }
+  )
+
+}
   return (
-    isLoading ? <div>Loading...</div> :
+    isLoading ? <Loader/> :
     <div className="product_info-container">
         <Header/>
         <div  className="product_info-content">
@@ -30,6 +42,7 @@ export default function Productinfo() {
                 <h1>{products.name}</h1>
                 <p>$ {products.price}</p>
             </div>
+            <AiTwotoneDelete onClick={deleteProduct} style={{fontSize:'2rem',cursor:'pointer'}} />
             </div>
         <div className="description">
             <div className="description__border"></div>

@@ -11,7 +11,7 @@ export default function Home() {
     const [categories, setCategories] = useState<any[]>([])
     const navigate = useNavigate()
     const changeQuery = (category: string) => {
-       let categories = category.toLowerCase()
+        let categories = category.toLowerCase()
         navigate(`/category/${categories}`)
     }
     useEffect(() => {
