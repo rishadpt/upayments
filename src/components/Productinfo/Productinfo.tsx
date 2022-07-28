@@ -10,12 +10,22 @@ import Loader from '../Loader/Loader';
 export default function Productinfo() {
     const [products, setProducts] = useState<any>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
+    
     const { id }:any = useParams()
-
+    
     useEffect(() => {
+
       UpaymentServices.getProductbyId(id).then((product) => {
+    
+        if(product.name){
+         
         setProducts(product);
         setIsLoading(false);
+         }
+        else{
+          window.location.href = '/404'
+          setIsLoading(false);
+        }
       }
         );  
     }, [])
@@ -37,9 +47,9 @@ const deleteProduct = () => {
     <div className="product_info-container">
         <Header/>
         <div  className="product_info-content">
-            <Avatar avatar={products.avatar} style="13rem"/>
+            <Avatar avatar={products.avatar ? products.avatar : 'No Image Found'} style="13rem"/>
             <div className="product_name_price">
-                <h1>{products.name}</h1>
+                <h1>{products.name ? products.name : 'No Name Found'}</h1>
                 <p>$ {products.price}</p>
             </div>
             <AiTwotoneDelete onClick={deleteProduct} style={{fontSize:'2rem',cursor:'pointer'}} />
@@ -47,7 +57,7 @@ const deleteProduct = () => {
         <div className="description">
             <div className="description__border"></div>
             <h2 >Description</h2>
-            <p>{products.description}</p>
+            <p>{products.description ? products.description : 'No Description Found'}</p>
         </div>
     </div>
   )

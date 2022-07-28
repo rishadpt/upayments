@@ -4,18 +4,20 @@ import Header from '../Header/Header'
 import Loader from '../Loader/Loader'
 import './CreateProduct.scss'
 import { useForm } from "react-hook-form";
+import { useNavigate } from 'react-router-dom'
 
 export default function CreateProduct() {
   const [category, setCategory] = useState<any[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
+  const navigate = useNavigate()
 
   const onSubmit = (data: any) => {
     setIsLoading(true)
     UpaymentServices.postProduct(data).then(() => {
       reset()
       setIsLoading(false)
-      window.location.href = '/'
+      navigate('/')
     })
 
   }
@@ -34,8 +36,7 @@ export default function CreateProduct() {
         <Header />
         <div className="create-product-content">
           <h1>Create Product</h1>
-
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form  id="form" onSubmit={handleSubmit(onSubmit)}>
             <input type="text" placeholder="Product name" {...register("name", { required: true, maxLength: 50 })} />
             {errors.name && <p className="err">Please check the Product Name</p>}
             <textarea placeholder="description"  {...register("description", { required: true, maxLength: 1000 })} />
@@ -51,7 +52,7 @@ export default function CreateProduct() {
             {errors.category && <p className="err">Please check the category</p>}
             <input type="number" placeholder="price" {...register("price", { required: true, maxLength: 6 })} />
             {errors.price && <p className="err">Please check the price</p>}
-            <button type="submit" >SUBMIT</button>
+            <button id="button" type="submit" >SUBMIT</button>
           </form>
         </div>
 

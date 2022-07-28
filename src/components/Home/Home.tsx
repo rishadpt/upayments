@@ -15,6 +15,7 @@ export default function Home() {
         navigate(`/category/${categories}`)
     }
     useEffect(() => {
+        document.title = 'Upayments Store'
         UpaymentServices.getCategory().then(
             (categories) => {
                 setCategories(categories)
