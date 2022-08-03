@@ -8,7 +8,7 @@ import { UpaymentServices } from '../../utils/services'
 import { useNavigate } from 'react-router-dom'
 
 export default function Home() {
-    const [categories, setCategories] = useState<any[]>([])
+    const [categories, setCategories] = useState<any>([])
     const navigate = useNavigate()
     const changeQuery = (category: string) => {
         let categories = category.toLowerCase()
@@ -18,7 +18,7 @@ export default function Home() {
         document.title = 'Upayments Store'
         UpaymentServices.getCategory().then(
             (categories) => {
-                setCategories(categories)
+                setCategories(categories.categories)
             }
         )
     }, [])
@@ -33,8 +33,8 @@ export default function Home() {
                 <div className="select-main child__common">
                     <select>
                         <option selected disabled>Categories</option>
-                        {categories && categories.map((category: any) => (
-                            <option onClick={() => changeQuery(category.name)} id={category.id} key={category.id}>{category.name}</option>))}
+                        {categories && categories.map((category: any,index:number) => (
+                            <option key={index} onClick={() => changeQuery(category.name)} id={category.id} >{category.name}</option>))}
                     </select>
                     <BiChevronDown />
                 </div>

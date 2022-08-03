@@ -12,14 +12,14 @@ export default function Productinfo() {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     
     const { id }:any = useParams()
-    
+
     useEffect(() => {
 
       UpaymentServices.getProductbyId(id).then((product) => {
     
-        if(product.name){
+        if(product.product.name){
          
-        setProducts(product);
+        setProducts(product.product);
         setIsLoading(false);
          }
         else{

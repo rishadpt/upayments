@@ -5,6 +5,7 @@ import Avatar from './Avatar/Avatar'
 import './Card.scss'
 
 export default function Card({ name, price, image, id }: ProductTypes) {
+  console.log(id)
   return (
     <Link className="card-container" to={`/products/${id}`}>
       <Avatar avatar={image ? image :"No Image Found"} />

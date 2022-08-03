@@ -25,7 +25,7 @@ export default function CreateProduct() {
   useEffect(() => {
     document.title = 'Create Product'
     UpaymentServices.getCategory().then((category) => {
-      setCategory(category)
+      setCategory(category.categories)
     })
     setIsLoading(false)
 

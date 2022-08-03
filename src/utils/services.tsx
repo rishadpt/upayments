@@ -6,7 +6,13 @@ export const UpaymentServices: ServiceProps = {
 
     getProducts: () => {
         return new Promise((resolve, reject) => {
-            fetch(`${BASE_URL}products`)
+            fetch(`${BASE_URL}products`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authorization': `Bearer ${process.env.REACT_APP_API_KEY}`
+                }
+            })
                 .then(res => res.json())
                 .then(data => resolve(data))
                 .catch(err => reject(err))
@@ -14,7 +20,15 @@ export const UpaymentServices: ServiceProps = {
     },
     getProductbyId: (id) => {
         return new Promise((resolve, reject) => {
-            fetch(`${BASE_URL}products/${id}`)
+            fetch(`${BASE_URL}products/${id}`,
+                {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'authorization': `Bearer ${process.env.REACT_APP_API_KEY}`
+                    }
+                }
+            )
                 .then(res => res.json())
                 .then(data => resolve(data))
                 .catch(err => reject(err))
@@ -22,7 +36,14 @@ export const UpaymentServices: ServiceProps = {
     },
     getCategory: () => {
         return new Promise((resolve, reject) => {
-            fetch(`${BASE_URL}categories`)
+            fetch(`${BASE_URL}categories`,
+                {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'authorization': `Bearer ${process.env.REACT_APP_API_KEY}`
+                    }
+                })
                 .then(res => res.json())
                 .then(data => resolve(data))
                 .catch(err => reject(err))
@@ -30,7 +51,14 @@ export const UpaymentServices: ServiceProps = {
     },
     getProductbyCategory: (id) => {
         return new Promise((resolve, reject) => {
-            fetch(`${BASE_URL}categories/${id}`)
+            fetch(`${BASE_URL}categories/${id}`,
+                {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'authorization': `Bearer ${process.env.REACT_APP_API_KEY}`
+                    }
+                })
                 .then(res => res.json())
                 .then(data => resolve(data))
                 .catch(err => reject(err))
@@ -41,7 +69,9 @@ export const UpaymentServices: ServiceProps = {
             fetch(`${BASE_URL}products`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'authorization': `Bearer ${process.env.REACT_APP_API_KEY}`
+
                 },
                 body: JSON.stringify({
                     name: data.name,
@@ -60,7 +90,11 @@ export const UpaymentServices: ServiceProps = {
     deleteProduct(id) {
         return new Promise((resolve, reject) => {
             fetch(`${BASE_URL}products/${id}`, {
-                method: 'DELETE'
+                method: 'DELETE',
+                headers:{
+                    'Content-Type': 'application/json',
+                    'authorization': `Bearer ${process.env.REACT_APP_API_KEY}`
+                }
             })
                 .then(res => res.json())
                 .then(data => resolve(data))
