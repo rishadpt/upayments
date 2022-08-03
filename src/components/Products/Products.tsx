@@ -27,8 +27,6 @@ export default function Products() {
             })
         }
     }, [category])
-
-    console.log(products)
     return (
         isLoading ? <Loader/> :
             <div className="products-container" >
